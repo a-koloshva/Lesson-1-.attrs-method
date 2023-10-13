@@ -1,30 +1,31 @@
 import './App.css';
 import styled from 'styled-components';
 
-
 function App() {
-    return (
-        <div className="App">
-            <Title>Styled-components <span>.attrs</span> method</Title>
+  return (
+    <div className="App">
+      <Title>
+        Styled-components <span>.attrs</span> method
+      </Title>
 
-            <Form>
-                <Field/>
-                <Field/>
-                <Field/>
-            </Form>
-        </div>
-    );
+      <Form>
+        <Field type={'text'} placeholder={'I white here'} />
+        <Field />
+        <Field />
+      </Form>
+    </div>
+  );
 }
 
 export default App;
 
 const Title = styled.h1`
-    font-size: 1.5em;
-    text-align: center;
-    margin-bottom: 32px;
-    span {
-      color: #e91e63;
-    }
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 32px;
+  span {
+    color: #e91e63;
+  }
 `;
 
 const Form = styled.form`
@@ -32,7 +33,10 @@ const Form = styled.form`
   max-width: 500px;
 `;
 
-const Field = styled.input`
+const Field = styled.input.attrs(({ type, placeholder }) => ({
+  type: type || 'password',
+  placeholder: placeholder || 'White here!',
+}))`
   padding: 5px 15px;
   margin: 10px 0;
   width: 100%;
